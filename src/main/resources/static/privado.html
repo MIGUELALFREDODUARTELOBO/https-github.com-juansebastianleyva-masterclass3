@@ -21,13 +21,10 @@
 </head>
 <body>
 
-<div class="container unauthenticated">
-    With GitHub: <a href="/oauth2/authorization/github">click here</a>
-</div>
-<div class="container authenticated" style="display:none">
-    Logged in as: <span id="user"></span>
+<div class="container authenticated" >
+    <h2> Hola <span id="user"></span>
 
-    <h1>Hola mundo</h1>
+   </h2>
 
     <input type="number" id="miId" placeholder="Id">
     <input type="text" id="name" placeholder="Nombre">
@@ -57,8 +54,7 @@
 <script type="text/javascript">
     $.get("/user", function (data) {
         $("#user").html(data.name);
-        $(".unauthenticated").hide()
-        $(".authenticated").show()
+
     });
 </script>
 
