@@ -25,4 +25,8 @@ public class PapeleriaRepository {
         return papeleriaCrudRepository.save(p);
     }
 
+    public void delete(Papeleria p){
+        papeleriaCrudRepository.delete(p);
+    }
+
 }

@@ -1,5 +1,6 @@
 package co.usa.ciclo3.ciclo3.service;
 
+import co.usa.ciclo3.ciclo3.model.Categoria;
 import co.usa.ciclo3.ciclo3.model.Papeleria;
 import co.usa.ciclo3.ciclo3.repository.PapeleriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,37 @@ public class PapeleriaService {
                 return p;
             }
         }
+    }
+
+    public Papeleria update(Papeleria c){
+        if(c.getId()!=null){
+            Optional<Papeleria>g=papeleriaRepository.getPapeleria(c.getId());
+            if(!g.isEmpty()){
+                if(c.getName()!=null){
+                    g.get().setName(c.getName());
+                }
+                if(c.getDescription()!=null){
+                    g.get().setDescription(c.getDescription());
+                }
+
+                if(c.getPrice()!=null){
+                    g.get().setPrice(c.getPrice());
+                }
+                return papeleriaRepository.save(g.get());
+            }
+        }
+        return c;
+
+    }
+
+    public boolean deleteCategory(int id){
+        Optional<Papeleria> c=getPapeleria(id);
+        if(!c.isEmpty()){
+            papeleriaRepository.delete(c.get());
+            return true;
+        }
+        return false;
+
     }
 
 }

@@ -33,6 +33,20 @@ public class PapeleriaController {
         return papeleriaService.save(p);
     }
 
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Papeleria update(@RequestBody Papeleria p){
+        return papeleriaService.update(p);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deletePapeleria(@PathVariable("id") int id){
+        return papeleriaService.deleteCategory(id);
+    }
+
+
+
 
 
 
