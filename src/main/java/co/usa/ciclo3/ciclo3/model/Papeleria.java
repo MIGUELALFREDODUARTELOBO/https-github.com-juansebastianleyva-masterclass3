@@ -18,7 +18,7 @@ public class Papeleria implements Serializable {
 
 
     @ManyToOne
-    @JoinColumn(name="categoriaId")
+    @JoinColumn(name="catiegoriaId")
     @JsonIgnoreProperties("papelerias")
     private Categoria categoria;
 

@@ -22,8 +22,10 @@ public class PapeleriaController {
     public List<Papeleria> getPapelerias(){
         return papeleriaService.getAll();
     }
+
     @GetMapping("/{id}")
-    public Optional<Papeleria> getPapeleria(@PathVariable("id") int id){
+    public Optional<Papeleria> getPapeleria(@PathVariable("id") int id)
+    {
         return papeleriaService.getPapeleria(id);
     }
 

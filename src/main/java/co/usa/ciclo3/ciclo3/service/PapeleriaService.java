@@ -46,7 +46,6 @@ public class PapeleriaService {
                 if(c.getDescription()!=null){
                     g.get().setDescription(c.getDescription());
                 }
-
                 if(c.getPrice()!=null){
                     g.get().setPrice(c.getPrice());
                 }
