@@ -13,7 +13,8 @@ public interface PapeleriaCrudRepository extends CrudRepository<Papeleria,Intege
     @Query("select c.categoria, COUNT(c.categoria) from Papeleria AS c group by c.categoria order by COUNT(c.categoria) desc")
     public List<Object[]> countTotalPapeleriaByCategoria();
 
+    //QUERY METHODS!
     public List<Papeleria> findAllByStartDateAfterAndStartDateBefore(Date dateOne,Date dateTwo);
 
-    public List<Papeleria> findAllByDescription(String description );
+    public List<Papeleria> findAllByDescription(String descriptionAAA);
 }

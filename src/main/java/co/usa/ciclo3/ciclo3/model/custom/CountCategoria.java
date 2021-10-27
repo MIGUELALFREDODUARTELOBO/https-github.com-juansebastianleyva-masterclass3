@@ -4,19 +4,19 @@ import co.usa.ciclo3.ciclo3.model.Categoria;
 
 public class CountCategoria {
 
-    private Integer total;
+    private Long total;
     private Categoria categoria;
 
-    public CountCategoria(Integer total, Categoria categoria) {
+    public CountCategoria(Long total, Categoria categoria) {
         this.total = total;
         this.categoria = categoria;
     }
 
-    public Integer getTotal() {
+    public Long getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(Long total) {
         this.total = total;
     }
 

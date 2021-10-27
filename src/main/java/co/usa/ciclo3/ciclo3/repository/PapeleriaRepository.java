@@ -49,11 +49,11 @@ public class PapeleriaRepository {
         for(int i=0;i<report.size();i++){
             /*
             Categoria cat=(Categoria) report.get(i)[0];
-            Integer cantidad=(Integer) report.get(i)[1];
+            Long cantidad=(Long) report.get(i)[1];
             CountCategoria cc=new CountCategoria(cantidad,cat);
             res.add(cc);
             */
-            res.add(new CountCategoria((Integer) report.get(i)[1],(Categoria)report.get(i)[0] ));
+            res.add(new CountCategoria((Long) report.get(i)[1],(Categoria)report.get(i)[0] ));
         }
         return res;
     }
