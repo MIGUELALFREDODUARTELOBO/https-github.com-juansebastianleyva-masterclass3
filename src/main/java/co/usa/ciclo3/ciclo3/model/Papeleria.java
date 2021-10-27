@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name="papeleria")
@@ -15,6 +16,7 @@ public class Papeleria implements Serializable {
     private String name;
     private Integer price;
     private String description;
+    private Date startDate;
 
 
     @ManyToOne
@@ -60,5 +62,13 @@ public class Papeleria implements Serializable {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 }

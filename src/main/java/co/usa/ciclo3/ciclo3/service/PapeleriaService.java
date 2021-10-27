@@ -2,10 +2,16 @@ package co.usa.ciclo3.ciclo3.service;
 
 import co.usa.ciclo3.ciclo3.model.Categoria;
 import co.usa.ciclo3.ciclo3.model.Papeleria;
+import co.usa.ciclo3.ciclo3.model.custom.CountCategoria;
+import co.usa.ciclo3.ciclo3.model.custom.DescriptionAmount;
 import co.usa.ciclo3.ciclo3.repository.PapeleriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,4 +72,33 @@ public class PapeleriaService {
 
     }
 
+    public List<CountCategoria> getTopCategorias(){
+        return papeleriaRepository.getTopCategorias();
+    }
+
+    public DescriptionAmount getStatusReport(){
+        List<Papeleria> completed=papeleriaRepository.getPapeleriasByDescription("completed");
+        List<Papeleria> cancelled=papeleriaRepository.getPapeleriasByDescription("cancelled");
+
+        DescriptionAmount descAmt=new DescriptionAmount(completed.size(),cancelled.size());
+        return descAmt;
+    }
+    public List<Papeleria> getPapeleriaPeriod(String d1, String d2){
+
+        // yyyy-MM-dd
+        SimpleDateFormat parser=new SimpleDateFormat("yyyy-MM-dd");
+        Date dateOne=new Date();
+        Date dateTwo=new Date();
+        try {
+            dateOne=parser.parse(d1);
+            dateTwo=parser.parse(d2);
+        }catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if(dateOne.before(dateTwo)){
+            return papeleriaRepository.getPapeleriaPeriod(dateOne,dateTwo);
+        }else{
+            return new ArrayList<>();
+        }
+    }
 }

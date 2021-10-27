@@ -2,6 +2,8 @@ package co.usa.ciclo3.ciclo3.web;
 
 
 import co.usa.ciclo3.ciclo3.model.Papeleria;
+import co.usa.ciclo3.ciclo3.model.custom.CountCategoria;
+import co.usa.ciclo3.ciclo3.model.custom.DescriptionAmount;
 import co.usa.ciclo3.ciclo3.service.PapeleriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,7 +49,21 @@ public class PapeleriaController {
         return papeleriaService.deleteCategory(id);
     }
 
+    //RETO 5
 
+    @GetMapping("/report-status")
+    public DescriptionAmount getPapeleriaDescritionStatus(){
+        return papeleriaService.getStatusReport();
+    }
+    @GetMapping("/report-categoria")
+    public List<CountCategoria> getCountCategoria(){
+        return papeleriaService.getTopCategorias();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Papeleria> getDatesReport(@PathVariable("dateOne")String d1, @PathVariable("dateTwo")String d2){
+       return papeleriaService.getPapeleriaPeriod(d1,d2);
+    }
 
 
 
